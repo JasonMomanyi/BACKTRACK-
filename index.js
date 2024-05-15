@@ -735,14 +735,25 @@ function _0x4dc1() {
             _0x25fdee['push'](_0x25fdee['shift']());
         }
     }
-}(_0x4dc1, -0x4 * 0x40301 + 0x750ed * 0x3 + 0x6fa55 * 0x1), await client[_0x5ddac0(0x96) + _0x5ddac0(0x90)](_0x5ddac0(0x9b) + _0x5ddac0(0x95) + 'aE'));
-      console.log(color("Congrats, BACKTRACK AI has successfully connected to this server", "green"));
-      console.log(color("Follow me on GitHub as JasonMomanyi", "red"));
-      console.log(color("Text the bot number with !menu to check my command list"));
-      client.sendMessage(owner + "@s.whatsapp.net", { text: `Bot has started... [BACKTRACK]` });
-    }
-    // console.log('Connected...', update)
-  });
+}(// Assuming 'client' is properly initialized and imported
+
+// Initialize client
+const client = new SomeClient();
+
+// Your code
+(async () => {
+  try {
+    // Some code here
+    await client.someMethod();
+    console.log(color("Congrats, BACKTRACK AI has successfully connected to this server", "green"));
+    console.log(color("Follow me on GitHub as JasonMomanyi", "red"));
+    console.log(color("Text the bot number with !menu to check my command list"));
+    client.sendMessage(owner + "@s.whatsapp.net", { text: `Bot has started... [BACKTRACK]` });
+  } catch (error) {
+    console.error(error);
+  }
+})();
+);
 const saveCreds = (creds) => {
   // Function to save credentials
 };
