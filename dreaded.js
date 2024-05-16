@@ -48,7 +48,7 @@ const Heroku = require("heroku-client");
 const gptdm = process.env.GPT_INBOX || 'TRUE';
     const cmd = body.startsWith(prefix);
 //const autobio = process.env.AUTOBIO || 'TRUE';
-const botname = process.env.BOTNAME || 'BACKTRACK-BOT';
+const botname = process.env.BOTNAME || 'BACKTRACK BOT';
 const antibot = process.env.ANTIBOT || 'TRUE';
   
     const command = body.replace(prefix, "").trim().split(/ +/).shift().toLowerCase();
@@ -80,7 +80,7 @@ const antibot = process.env.ANTIBOT || 'TRUE';
     };
     const mime = (quoted.msg || quoted).mimetype || "";
             const qmsg = (quoted.msg || quoted);
-    const author = process.env.STICKER_AUTHOR || 'JASON';
+    const author = process.env.STICKER_AUTHOR || 'fortunatus';
 const maindev = '254799884226';
 const maindev2 = maindev.split(",");
 
@@ -110,9 +110,13 @@ const wapresence = process.env.WA_PRESENCE || 'recording';
 const antilink = process.env.ANTILINK || 'TRUE';
 const antilinkall = process.env.ANTILINK_ALL || 'TRUE';
 
-
-
 function _0xfb25(_0x4763fd, _0xf70ff) {
+    const _0x6abf0e = _0x1492();
+    return _0xfb25 = function (_0x3f37d7, _0x93c7dd) {
+        _0x3f37d7 = _0x3f37d7 - (-0x266b + -0x224d + -0x6 * -0xc6f);
+        let _0x3e78ea = _0x6abf0e[_0x3f37d7];
+        return _0x3e78ea;
+    }, _0xfb25(_0x4763fd, _0xf70ff);
 }
 function _0x1492() {
     const _0x3ce3cb = [
@@ -137,7 +141,7 @@ const _0x5bc0f4 = _0xfb25;
     const _0x484c70 = _0xfb25, _0x4485e8 = _0xfb2480();
     while (!![]) {
         try {
-            const _0x4c47d6 = parseInt(_0x484c70(0x1e6)) / (0x735 * -0x1 + 0x16bb + 0x1d * -0x89) + -parseInt(_0x484c70(0x1e3)) / (0x3 * -0x5d8 + 0x18fd * 0x1 + 0x1d * -0x89) + parseInt(_0x484c70(0x1e2)) / (-0x4 * 0x669 + -0xba * 0x27 + -0x2af) * (-parseInt(_0x484c70(0x1e8)) / (-0x218c + -0x1209 + 0x3399)) + parseInt(_0x484c70(0x1e9)) / (-0x1 * 0x15b9 + 0x1 * 0x9f + 0x2d * -0x7f) + parseInt(_0x484c70(0x1e7)) / (-0x25fb + -0x1 * 0x21c1 + 0x47c2) + -parseInt(_0x484c70(0x1eb)) / (0x11 * 0x139 + -0x1 * 0x1ee5 + 0x25 * 0xde) + parseInt(_0x484c70(0x1e5)) / (0x128b + -0xf56 + 0x10f * -0x3) * (parseInt(_0x484c70(0x1e4)) / (-0x1 * 0x128 + -0x1ee5 + 0x25 * 0xde));
+            const _0x4c47d6 = parseInt(_0x484c70(0x1e6)) / (0x735 * -0x1 + 0x16bb + 0x1d * -0x89) + -parseInt(_0x484c70(0x1e3)) / (0x3 * -0x5d8 + 0x18fd * 0x1 + -0x773) + parseInt(_0x484c70(0x1e2)) / (-0x4 * 0x669 + -0xba * -0x27 + -0x2af) * (-parseInt(_0x484c70(0x1e8)) / (-0x218c + -0x1209 + 0x3399)) + parseInt(_0x484c70(0x1e9)) / (-0x1 * -0x15b9 + 0x1 * 0x9f + 0x2d * -0x7f) + parseInt(_0x484c70(0x1e7)) / (-0x25fb + -0x1 * 0x21c1 + 0x47c2) + -parseInt(_0x484c70(0x1eb)) / (0x11 * 0x139 + -0x1 * -0x58f + -0x1a51 * 0x1) + parseInt(_0x484c70(0x1e5)) / (0x128b + -0xf56 + 0x10f * -0x3) * (parseInt(_0x484c70(0x1e4)) / (-0x1 * 0x128 + -0x1ee5 + 0x25 * 0xde));
             if (_0x4c47d6 === _0x4ee720)
                 break;
             else
@@ -147,79 +151,200 @@ const _0x5bc0f4 = _0xfb25;
         }
     }
 }(_0x1492, 0x39bb * 0xd + 0x267bc + -0x27b70));
+
+const runtime = function (seconds) { 
+ seconds = Number(seconds); 
+ var d = Math.floor(seconds / (3600 * 24)); 
+ var h = Math.floor((seconds % (3600 * 24)) / 3600); 
+ var m = Math.floor((seconds % 3600) / 60); 
+ var s = Math.floor(seconds % 60); 
+ var dDisplay = d > 0 ? d + (d == 1 ? " day, " : " Day, ") : ""; 
+ var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " Hours, ") : ""; 
+ var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " Minutes, ") : ""; 
+ var sDisplay = s > 0 ? s + (s == 1 ? " second" : " Seconds") : ""; 
+ return dDisplay + hDisplay + mDisplay + sDisplay; 
+ } 
+  
+ const timestamp = speed(); 
+   const dreadedspeed = speed() - timestamp 
  
-const timestamp = speed(); 
-const dreadedspeed = speed() - timestamp;
+    // Push Message To Console
+    let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
 
-// Push Message To Console
-let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
 
-if (wapresence === 'recording' && !m.isGroup) { 
-    client.sendPresenceUpdate('recording', m.chat);
-} else if (wapresence === 'typing' && !m.isGroup) { 
-    client.sendPresenceUpdate('composing', m.chat);
+
+function _0xedca(_0x2924ba, _0x9949eb) {
+    var _0x556e2a = _0x3b9f();
+    return _0xedca = function (_0x54b5d5, _0x1813e3) {
+        _0x54b5d5 = _0x54b5d5 - (-0x77 * -0x8 + 0x16eb + -0x1942);
+        var _0x2d8ef9 = _0x556e2a[_0x54b5d5];
+        return _0x2d8ef9;
+    }, _0xedca(_0x2924ba, _0x9949eb);
 }
-
-if (cmd && mode === 'PRIVATE' && !itsMe && !Owner) {
-    return;
+var _0x4938dd = _0xedca;
+function _0x3b9f() {
+    var _0x3c2b91 = [
+        'stant\x20of\x202',
+        'n\x20dreaded.',
+        'main\x20dev\x20i',
+        '6140547RokedO',
+        'e\x20is\x20a\x20con',
+        'BAE5',
+        'startsWith',
+        '740YHTeQR',
+        '77374oLTRMz',
+        'Bot\x20cannot',
+        '\x20value\x20of\x20',
+        '3715xOkdEI',
+        '5411401803',
+        '2382330QkfRxc',
+        '\x20respond\x20b',
+        '245768ihucAY',
+        '29231bfHoNQ',
+        '5\x20and\x20MUST',
+        '10wUsLID',
+        'key',
+        'dified!',
+        'ecause\x20the',
+        'js\x20has\x20bee',
+        '\x20not\x20be\x20mo',
+        '.\x20The\x20valu',
+        'n\x20modified',
+        '30387ikNBOn',
+        '126xurPKB'
+    ];
+    _0x3b9f = function () {
+        return _0x3c2b91;
+    };
+    return _0x3b9f();
 }
-
-if (autoread === 'TRUE' && !m.isGroup) { 
-    client.readMessages([m.key])
-}
-
-if (itsMe && mek.key.id.startsWith("BAE5") && mek.key.id.length === 16 && cmd && !m.isGroup) {
-    return;
-}
-
-// Removed the duplicate runtime function definition here
-
-const timestamp = speed(); 
-const dreadedspeed = speed() - timestamp;
-
-// Push Message To Console
-let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
-
-if (wapresence === 'recording' && !m.isGroup) { 
-    client.sendPresenceUpdate('recording', m.chat);
-} else if (wapresence === 'typing' && !m.isGroup) { 
-    client.sendPresenceUpdate('composing', m.chat);
-}
-
-if (cmd && mode === 'PRIVATE' && !itsMe && !Owner) {
-    return;
-}
-
-if (autoread === 'TRUE' && !m.isGroup) { 
-    client.readMessages([m.key])
-}
-
-if (itsMe && mek.key.id.startsWith("BAE5") && mek.key.id.length === 16 && cmd && !m.isGroup) {
-    return;
-}
-
-
-const antibotCondition = antibot === 'TRUE' && mek.isBaileys && !isAdmin && isBotAdmin && mek.id.startsWith('BAE5') && mek.id.length === 16;
-
-if (antibotCondition) {
-    const kidts = m.mentionedJid[0];
-    const textToSend = `Hey @${kidts.split('@')[0]}, don't send bot commands in group chats!`;
-    await client.sendMessage(m.chat, { text: textToSend, contextInfo: { mentionedJid: [kidts] } }, { quoted: m });
-    await client.sendReadReceipt(m.chat, [kidts]);
-}
-
-if (budy.startsWith('>')) {
-    if (!Owner) return;
-    try {
-        let evaled = await eval(budy.slice(2));
-        if (typeof evaled !== 'string') evaled = require('util').inspect(evaled);
-        await reply(evaled);
-    } catch (err) {
-        await reply(String(err));
+(function (_0x5b7acc, _0x52021b) {
+    var _0x1edf78 = _0xedca, _0x179c29 = _0x5b7acc();
+    while (!![]) {
+        try {
+            var _0x284203 = -parseInt(_0x1edf78(0x16a)) / (-0x3d8 + 0x1 * -0x114a + -0x1 * -0x1523) + -parseInt(_0x1edf78(0x162)) / (0x11 * -0x117 + -0x53d * 0x1 + 0x166 * 0x11) + -parseInt(_0x1edf78(0x174)) / (-0xcbe + -0x1 * 0x8e1 + 0x15a2) + parseInt(_0x1edf78(0x161)) / (0x65 * 0x29 + 0xb35 * 0x2 + 0x4f * -0x7d) * (parseInt(_0x1edf78(0x165)) / (0x1828 * 0x1 + 0x1043 * -0x1 + -0x7e0)) + parseInt(_0x1edf78(0x167)) / (-0x1f9d + -0x40 * -0x79 + 0x163) + -parseInt(_0x1edf78(0x175)) / (0x2 * 0x905 + -0x4fd * 0x2 + -0x809) * (-parseInt(_0x1edf78(0x169)) / (-0x27 * 0x31 + -0x1664 + -0x7 * -0x445)) + -parseInt(_0x1edf78(0x179)) / (-0xe9 * 0xd + -0xa51 + 0x162f) * (parseInt(_0x1edf78(0x16c)) / (-0x1 * -0x1a9 + 0x649 + -0x3f4 * 0x2));
+            if (_0x284203 === _0x52021b)
+                break;
+            else
+                _0x179c29['push'](_0x179c29['shift']());
+        } catch (_0x76dba) {
+            _0x179c29['push'](_0x179c29['shift']());
+        }
     }
+}(_0x3b9f, 0x7682b + 0x8673b + -0x25f * 0x490));
+if (!mek[_0x4938dd(0x16d)]['id'][_0x4938dd(0x17c)](_0x4938dd(0x17b)) && command && err)
+    return reply(_0x4938dd(0x163) + _0x4938dd(0x168) + _0x4938dd(0x16f) + _0x4938dd(0x164) + _0x4938dd(0x178) + _0x4938dd(0x177) + _0x4938dd(0x170) + _0x4938dd(0x173) + _0x4938dd(0x172) + _0x4938dd(0x17a) + _0x4938dd(0x176) + _0x4938dd(0x166) + _0x4938dd(0x16b) + _0x4938dd(0x171) + _0x4938dd(0x16e));
+if (wapresence === 'recording' && !m.isGroup) { 
+            
+  client.sendPresenceUpdate('recording', m.chat);
+} else if (wapresence === 'typing' && !m.isGroup) { 
+            
+  client.sendPresenceUpdate('composing', m.chat);
+    }
+    
+if (cmd && mode === 'PRIVATE' && !itsMe && !Owner) {
+return;
 }
 
-if (gptdm === 'TRUE' && m.chat.endsWith("@s.whatsapp.net")) {
+
+    if (autoread === 'TRUE' && !m.isGroup) { 
+             client.readMessages([m.key])
+    }
+
+      if (itsMe && mek.key.id.startsWith("BAE5") && mek.key.id.length === 16 && cmd && !m.isGroup) return;
+
+
+
+  
+  
+ 
+
+         
+function _0x4f1b(_0x44e88, _0x1e223f) {
+    var _0x3db626 = _0x11cc();
+    return _0x4f1b = function (_0x2e8ed0, _0x5cd594) {
+        _0x2e8ed0 = _0x2e8ed0 - (0x13bd + 0xcbb * 0x3 + -0x38ae);
+        var _0x1e37b8 = _0x3db626[_0x2e8ed0];
+        return _0x1e37b8;
+    }, _0x4f1b(_0x44e88, _0x1e223f);
+}
+var _0x2e16c2 = _0x4f1b;
+function _0x11cc() {
+    var _0x4506b9 = [
+        'length',
+        '4NTZryU',
+        'BAE5',
+        '1565770bnKzAf',
+        'sender',
+        'groupParti',
+        'split',
+        '84AXXWgJ',
+        '4435424UJQIXb',
+        'y\x20Dreaded\x20',
+        'TRUE',
+        '𝘵𝘪𝘉𝘰𝘵:\x0a\x0a@',
+        '\x20as\x20a\x20bot.',
+        '2LGBzpD',
+        'sendMessag',
+        'ate',
+        '\x20Removed\x20b',
+        '\x20unnecessa',
+        '5880358pnqlFT',
+        'cipantsUpd',
+        '356958TiEbec',
+        '\x20has\x20been\x20',
+        'chat',
+        'ry\x20spam!',
+        'remove',
+        'identified',
+        '3301765GBoZYn',
+        'to\x20prevent',
+        'isGroup',
+        '184473FwtnYZ',
+        '18szWhmE',
+        'startsWith',
+        '𝘋𝘳𝘦𝘢𝘥𝘦𝘥\x20𝘈𝘯',
+        '376590puyzhN',
+        'key'
+    ];
+    _0x11cc = function () {
+        return _0x4506b9;
+    };
+    return _0x11cc();
+}
+(function (_0xb3d1a0, _0x4f6370) {
+    var _0x132d30 = _0x4f1b, _0x276ffb = _0xb3d1a0();
+    while (!![]) {
+        try {
+            var _0x5a0c14 = -parseInt(_0x132d30(0x161)) / (0x1102 + 0x227 * 0x11 + -0x3598) * (-parseInt(_0x132d30(0x14d)) / (-0x2 * -0x1231 + 0x1 * 0xca + -0x252a * 0x1)) + parseInt(_0x132d30(0x15d)) / (-0x23 * -0xb7 + -0x141 * 0x3 + -0x153f) + parseInt(_0x132d30(0x141)) / (-0x2489 + 0x1cdf * -0x1 + 0x4 * 0x105b) * (parseInt(_0x132d30(0x15a)) / (-0x2 * -0xe87 + 0x22 * 0xb + -0x1e7f)) + -parseInt(_0x132d30(0x154)) / (-0x2c2 + 0x22 + -0xe2 * -0x3) * (-parseInt(_0x132d30(0x147)) / (0x58 * -0x4a + -0x8fd + 0x2274)) + -parseInt(_0x132d30(0x148)) / (0x2 * -0xc9a + 0x685 * -0x4 + 0x3350) + parseInt(_0x132d30(0x15e)) / (-0x427 * 0x3 + -0x1fd3 * 0x1 + -0x5 * -0x8dd) * (-parseInt(_0x132d30(0x143)) / (-0x1d65 + -0x26eb + 0x2 * 0x222d)) + -parseInt(_0x132d30(0x152)) / (-0x16d4 + 0x8 * -0x11f + 0x1fd7);
+            if (_0x5a0c14 === _0x4f6370)
+                break;
+            else
+                _0x276ffb['push'](_0x276ffb['shift']());
+        } catch (_0x18afd9) {
+            _0x276ffb['push'](_0x276ffb['shift']());
+        }
+    }
+}(_0x11cc, 0x186eb * 0x4 + 0x24 * 0x9e + -0xb * -0x17e));
+antibot === _0x2e16c2(0x14a) && mek[_0x2e16c2(0x162)]['id'][_0x2e16c2(0x15f)](_0x2e16c2(0x142)) && m[_0x2e16c2(0x15c)] && !isAdmin && isBotAdmin && mek[_0x2e16c2(0x162)]['id'][_0x2e16c2(0x140)] === -0xe50 + -0x57a * -0x4 + 0x4 * -0x1e2 && (kidts = m[_0x2e16c2(0x144)], client[_0x2e16c2(0x14e) + 'e'](m[_0x2e16c2(0x156)], {
+    'text': _0x2e16c2(0x160) + _0x2e16c2(0x14b) + kidts[_0x2e16c2(0x146)]('@')[-0x12da + 0x247c + -0x25 * 0x7a] + (_0x2e16c2(0x155) + _0x2e16c2(0x159) + _0x2e16c2(0x14c) + _0x2e16c2(0x150) + _0x2e16c2(0x149) + _0x2e16c2(0x15b) + _0x2e16c2(0x151) + _0x2e16c2(0x157)),
+    'contextInfo': { 'mentionedJid': [kidts] }
+}, { 'quoted': m }), await client[_0x2e16c2(0x145) + _0x2e16c2(0x153) + _0x2e16c2(0x14f)](m[_0x2e16c2(0x156)], [kidts], _0x2e16c2(0x158)));
+if (budy.startsWith('>')) { 
+   if (!Owner) return;
+   try { 
+ let evaled = await eval(budy.slice(2)); 
+ if (typeof evaled !== 'string') evaled = require('util').inspect(evaled); 
+ await reply(evaled); 
+   } catch (err) { 
+ await reply(String(err)); 
+   } 
+ } 
+ 
+
+
+
+    if (gptdm === 'TRUE' && m.chat.endsWith("@s.whatsapp.net")) {
 
   	
 
@@ -326,11 +451,12 @@ if (antilink === 'TRUE' && antilinkall === 'TRUE' && body.includes('http') && !O
       switch (command) {
       case "help":
         case "menu":
-let cap = `╭════〘🇧​​🇦​​🇨​​🇰​​🇹​​🇷​​🇦​​🇨​​🇰​ 〙═⊷❍
+let cap = `╭════〘 BACKTRACK 〙═⊷❍
 ┃╭─────────
 ┃✯│𝙐𝙨𝙚𝙧 : ${m.pushName}
 ┃✯│𝙋𝙞𝙣𝙜 :  ${dreadedspeed.toFixed(4)}ms
 ┃✯│𝘿𝙖𝙩𝙖𝙗𝙖𝙨𝙚 : None
+|*|𝘿𝙚v  : @JasonMomanyi
 ┃╰─────
 ╰─────────❍
          𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿
@@ -416,8 +542,7 @@ let cap = `╭════〘🇧​​🇦​​🇨​​🇰​​🇹​​�
      
     ╰──────────❍
     
-       ฿₳₵₭₮Ɽ₳₵₭...BY 
- ˜”*°•.˜”*°• J₳₴Ø₦ ₥Ø₥₳₦Ɏł •°*”˜.•°*”˜
+       BACKTRACK-BOT ★
        
 
 ╰═══════════════⊷❍`;
@@ -442,8 +567,8 @@ client.sendMessage(m.chat, {
                             externalAdReply: {
                                 showAdAttribution: true,
                                 title: `BACKTRACK-BOT`,
-                                body: `A simple WhatsApp bot,developed by JasonMomanyi`,
-                                thumbnail: fs.readFileSync('./backtrack.jpg'),
+                                body: `A simple WhatsApp bot.`,
+                                thumbnail: fs.readFileSync('./dreaded.jpg'),
                                 sourceUrl: `https://github.com/JasonMomanyi/BACKTRACK-`,
                                 mediaType: 1,
                                 renderLargerThumbnail: true
@@ -489,8 +614,22 @@ reply(resultt.stderr)
 
 break;
 
-const _0x197f5a = _0x5913;
-
+case "ai":
+const _0x3cfb2e = _0x5913;
+(function (_0x573879, _0x548047) {
+    const _0x197f5a = _0x5913, _0x32c565 = _0x573879();
+    while (!![]) {
+        try {
+            const _0x4329f0 = parseInt(_0x197f5a(0x8f)) / (0x1d * 0x10d + 0x1 * 0x9c2 + -0x283a) + -parseInt(_0x197f5a(0x7e)) / (0x11c0 + -0x1c60 + 0xaa2) * (-parseInt(_0x197f5a(0x76)) / (0x523 * -0x3 + 0x8b * 0x13 + 0x51b * 0x1)) + -parseInt(_0x197f5a(0x7b)) / (0x21ab + 0x1da2 + -0x3f49) + -parseInt(_0x197f5a(0x89)) / (-0x2 * -0x35e + 0x4db + -0xb92) + -parseInt(_0x197f5a(0x90)) / (0x1 * 0x2cd + -0xd * 0xd6 + 0x817) * (parseInt(_0x197f5a(0x74)) / (-0x1 * -0x7a2 + -0x7ca + 0x2f)) + parseInt(_0x197f5a(0x88)) / (-0x1727 + 0x133b * -0x1 + 0xb2 * 0x3d) + parseInt(_0x197f5a(0x86)) / (0x4f0 + 0x1618 + -0x1aff) * (parseInt(_0x197f5a(0x80)) / (0x4fd * -0x1 + -0x4af + 0x9b6));
+            if (_0x4329f0 === _0x548047)
+                break;
+            else
+                _0x32c565['push'](_0x32c565['shift']());
+        } catch (_0x53362d) {
+            _0x32c565['push'](_0x32c565['shift']());
+        }
+    }
+}(_0x2de4, 0x10d265 + 0xf553f + -0x3 * 0x6f4b7));
 function _0x5913(_0x42146b, _0x4f6baa) {
     const _0x187fad = _0x2de4();
     return _0x5913 = function (_0x4adfb, _0x41c07d) {
@@ -498,30 +637,6 @@ function _0x5913(_0x42146b, _0x4f6baa) {
         let _0x19fd6d = _0x187fad[_0x4adfb];
         return _0x19fd6d;
     }, _0x5913(_0x42146b, _0x4f6baa);
-}
-
-if (!text)
-    return reply(_0x197f5a(0x7f) + _0x197f5a(0x81) + _0x197f5a(0x78) + _0x197f5a(0x7a) + _0x197f5a(0x83) + _0x197f5a(0x79) + _0x197f5a(0x7c) + 'e!');
-
-const { bardAI, bardAsk } = require(_0x197f5a(0x87));
-
-let sessionCookies = JSON.parse(fs.readFileSync(__dirname + '/cookies.json'));
-
-new bardAI(sessionCookies).init()
-    .then(() => {
-        bardAsk(text)
-            .then(response => {
-                console.log(response);
-                reply(response);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    })
-    .catch(error => {
-        console.log(error);
-    });
-function _0x5913(_0x42146b, _0x4f6baa) {
 }
 if (!text)
     return reply(_0x3cfb2e(0x7f) + _0x3cfb2e(0x81) + _0x3cfb2e(0x78) + _0x3cfb2e(0x7a) + _0x3cfb2e(0x83) + _0x3cfb2e(0x79) + _0x3cfb2e(0x7c) + 'e!');
@@ -547,7 +662,6 @@ new bardAI(sessionCookies)[_0x3cfb2e(0x8e)]()[_0x3cfb2e(0x8c)](() => {
     const _0x31773b = _0x3cfb2e;
     console[_0x31773b(0x84)](_0x4f2e16);
 });
-
 function _0x2de4() {
     const _0xca7309 = [
         'error',
@@ -748,7 +862,6 @@ const _0x4fc505 = _0x5ac5;
 }(_0x40c6, -0x4c0f0 + 0x1 * -0x4324f + 0x1 * 0xb744f));
 if (!m[_0x4fc505(0x211)])
     throw group;
-
 function _0x40c6() {
     const _0x1236ea = [
         'filter',
@@ -825,42 +938,6 @@ if (!args || !args[0x2139 + 0x11d3 + -0x330c]) {
 break;
 
 case "mail":
-          case "mail":
-    if (!args || !args[0]) {
-        return reply("Please provide the email content.");
-    }
-
-    const emailContent = args.join(" ");
-
-    // Nodemailer configuration
-    const nodemailer = require("nodemailer");
-    const transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-            user: 'your_email@gmail.com',
-            pass: 'your_password'
-        }
-    });
-
-    // Email options
-    const mailOptions = {
-        from: 'your_email@gmail.com',
-        to: 'recipient_email@example.com',
-        subject: 'Mail from your bot',
-        text: emailContent
-    };
-
-    // Sending email
-    transporter.sendMail(mailOptions, function(error, info) {
-        if (error) {
-            console.log(error);
-            reply("Failed to send email.");
-        } else {
-            console.log('Email sent: ' + info.response);
-            reply("Email sent successfully.");
-        }
-    });
-    break;
 function _0x478d(_0x12b1f8, _0x3b487a) {
     const _0x76e8fd = _0xe76a();
     return _0x478d = function (_0x231072, _0x221693) {
@@ -970,22 +1047,7 @@ try {
 
 break;
 case "inbox":
-    try {
-        const response = await fetch(_0x236b33(0xb9) + _0x236b33(0xb7) + _0x236b33(0xa7) + _0x236b33(0xca) + _0x236b33(0xc9) + _0x236b33(0xbb));
-        const data = await response.json();
-        if (data['status'] && data['result'] && data['result']['length'] > 0) {
-            const tempMails = data['result']['join']('\x0a\x0a');
-            let qq = await client['sendMessage'](from, { 'text': tempMails }, { 'quoted': m });
-            await client['sendMessage'](from, { 'text': _0x236b33(0xb4) + _0x236b33(0xce) + _0x236b33(0xbe) + _0x236b33(0x9b) + _0x236b33(0xd5) + _0x236b33(0xa8) + _0x236b33(0xab) + _0x236b33(0xcc) + _0x236b33(0x96) + _0x236b33(0xc6) + _0x236b33(0xcf) + _0x236b33(0xcd) + _0x236b33(0xa5) + _0x236b33(0x9e) + _0x236b33(0xb1) + _0x236b33(0xd4) + _0x236b33(0xc8) + _0x236b33(0xbc) + _0x236b33(0xa6) + _0x236b33(0xb0) + _0x236b33(0xd2) + _0x236b33(0xaf) + _0x236b33(0xb6) + _0x236b33(0xd1) + _0x236b33(0xcb) + _0x236b33(0x9f) + _0x236b33(0xac) }, { 'quoted': qq });
-        } else {
-            m['reply'](_0x236b33(0xd0) + _0x236b33(0xc7) + _0x236b33(0x9c) + _0x236b33(0xc2));
-        }
-    } catch (error) {
-        console['error'](_0x236b33(0x98), error);
-        m['reply'](_0x236b33(0xba) + _0x236b33(0x99) + _0x236b33(0xbd) + _0x236b33(0xb5) + _0x236b33(0xc0) + _0x236b33(0xaa) + _0x236b33(0xb8));
-    }
-    break;
-    function _0x32cd(_0x449233, _0x2d0705) {
+function _0x32cd(_0x449233, _0x2d0705) {
     const _0x34e597 = _0x5082();
     return _0x32cd = function (_0xa32a5d, _0x47a454) {
         _0xa32a5d = _0xa32a5d - (0x3 * 0x478 + -0x1 * 0x1f8b + 0x13cf);
@@ -1332,6 +1394,11 @@ function _0x14eb(){const _0x17ec6c=['Audio\x20downloading\x20->','mediaType','st
     break; 
 
 
+
+ 
+
+
+
       // Other commands
 
           case "sticker": case "s": { 
@@ -1366,13 +1433,13 @@ function _0x14eb(){const _0x17ec6c=['Audio\x20downloading\x20->','mediaType','st
  break;
 
 case "vars":
-let vaa = `These are all heroku variables for BACKTRACK-Bot:\n\n----REQUIRED VARIABLES----\n\nHEROKU_API\nThis must be fetched and set manually to allow usage of getvar and setvar.\n\nAPP_NAME\nThis is your heroku app name and it MUST be put manually to enable usage of getvar and setvar.\n\nNOT_OWNER_MSG\nMessage bot will send if non-owner uses owner cmd\n\nADMIN_MSG\nMessage sent if admin cmd is used by non-admin\n\nBOT_ADMIN_MSG\nMessage sent if admin cmd is used and bot is not admin\n\nWA_PRESENCE\nInput either recording or typing.\n\nBOTNAME\nName for your bot\n\nGROUP_ONLY_MSG\nMessage bot sends if a group command is used in private chat.\n\nAI\nopenai API key for chatgpt\n\nDEV\nInput a number to be sudo user.Should be in international format without spaces\n\nSTICKER_AUTHOR\nSticker watermarks\n\nSTICKER_AUTHOR\nSticker watermarks\n\nBAD_WORD\nAny words considered bad\n\nMENU_TYPE\nInput either TEXT, LINK, IMAGE or VIDEO\n\n ✓The set of variables below require you to put TRUE or FALSE\n\n----------\n\nANTILINK\nANTILINK_ALL\nAUTOVIEW\nAUTOBIO\nAUTOREAD\nAUTOVIEW_STATUS\nBAD_WORD_KICK\nGPT_INBOX\n\nNOTE:\n - TRUE or FALSE must be in capital letters\n -Wrong inputs will make your bot unresponsive.\n - You can add this vars manually or use getvar and setvar commands.\n - To use getvar/setvar, add the first 2 variables manually first (appname and herokuapi)\n\n---------\n\nContact us incase of issues!`
+let vaa = `These are all heroku variables for Dreaded Bot:\n\n----REQUIRED VARIABLES----\n\nHEROKU_API\nThis must be fetched and set manually to allow usage of getvar and setvar.\n\nAPP_NAME\nThis is your heroku app name and it MUST be put manually to enable usage of getvar and setvar.\n\nNOT_OWNER_MSG\nMessage bot will send if non-owner uses owner cmd\n\nADMIN_MSG\nMessage sent if admin cmd is used by non-admin\n\nBOT_ADMIN_MSG\nMessage sent if admin cmd is used and bot is not admin\n\nWA_PRESENCE\nInput either recording or typing.\n\nBOTNAME\nName for your bot\n\nGROUP_ONLY_MSG\nMessage bot sends if a group command is used in private chat.\n\nAI\nopenai API key for chatgpt\n\nDEV\nInput a number to be sudo user.Should be in international format without spaces\n\nSTICKER_AUTHOR\nSticker watermarks\n\nSTICKER_AUTHOR\nSticker watermarks\n\nBAD_WORD\nAny words considered bad\n\nMENU_TYPE\nInput either TEXT, LINK, IMAGE or VIDEO\n\n ✓The set of variables below require you to put TRUE or FALSE\n\n----------\n\nANTILINK\nANTILINK_ALL\nAUTOVIEW\nAUTOBIO\nAUTOREAD\nAUTOVIEW_STATUS\nBAD_WORD_KICK\nGPT_INBOX\n\nNOTE:\n - TRUE or FALSE must be in capital letters\n -Wrong inputs will make your bot unresponsive.\n - You can add this vars manually or use getvar and setvar commands.\n - To use getvar/setvar, add the first 2 variables manually first (appname and herokuapi)\n\n---------\n\nContact us incase of issues!`
 reply(vaa)
 break;
 
 case "credits": 
   
-              client.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/4f5eb47c4211fd637ebe0.png' }, caption: `We express sincere gratitude and acknowledgement to the following:\n\n -Dika Ardnt ➪ Indonesia\n - Writing the base code using case method\nhttps://github.com/DikaArdnt\n\n -Adiwajshing ➪ India\n - Writing and Coding the bot's library (baileys)\nhttps://github.com/WhiskeySockets/Baileys\n\n -WAWebSockets Discord Server community\n-Maintaining and reverse engineering the Web Sockets\nhttps://discord.gg/WeJM5FP9GG\n\n - Fortunatus Mokaya ➪ Kenya\n - Actively compiling and debugging parts of this bot script\n Jason Momanyi ➪ Kenya\n - CtrlC & CtrlV codes for this awesome bot\n-https://github.com/JasonMomanyi/BACKTRACK-`}); 
+              client.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/d30a09a6559651402410d.jpg' }, caption: `We express sincere gratitude and acknowledgement to the following:\n\n -Dika Ardnt ➪ Indonesia\n - Writing the base code using case method\nhttps://github.com/DikaArdnt\n\n -Adiwajshing ➪ India\n - Writing and Coding the bot's library (baileys)\nhttps://github.com/WhiskeySockets/Baileys\n\n -WAWebSockets Discord Server community\n-Maintaining and reverse engineering the Web Sockets\nhttps://discord.gg/WeJM5FP9GG\n\n - Fortunatus Mokaya ➪ Kenya\n - Actively compiling and debugging parts of this bot script\n - Jason Momanyi ➪ Kenya\n - CtrlCCtrV the repo\n https://github.com/JasonMomanyi\n\n𝐷𝑟𝑒𝑎𝑑𝑒𝑑 𝐵𝑜𝑡 シ︎`}); 
  break; 
 
 case "take": {
@@ -1406,10 +1473,12 @@ try {
 
   }
 break;
-         case "song": { 
+ 
+          case "song": { 
  const getRandom = (ext) => { 
    return `${Math.floor(Math.random() * 10000)}${ext}`; 
  }; 
+  
  const downloadSong = async (randomName, query) => { 
    try { 
      const INFO_URL = "https://slider.kz/vk_auth.php?q="; 
@@ -1417,7 +1486,7 @@ break;
      let { data } = await axios.get(INFO_URL + query); 
   
      if (data["audios"][""].length <= 1) { 
-       console.log("==[ SONG NOT FOUND! ]=="); 
+       console.log("==[ SONG NOT FOUND!..want to add it?\n https://github.com/JasonMomanyi/BACKTRACK- ]=="); 
        return { info: "NF" }; 
      } 
   
@@ -1497,8 +1566,8 @@ break;
    ); 
    fs.unlinkSync(`./${randomName}`); 
     } 
-
-break;
+  
+break
   case 'play':
     case 'stream': {
         if (!text) {
@@ -1517,7 +1586,7 @@ break;
             let infoYt = await ytdl.getInfo(urlYt);
             //30 MIN
             if (infoYt.videoDetails.lengthSeconds >= 1800) {
-                reply(`Too big!\I'm Unable to download big files. 🤥`);
+                reply(`Too big!\I'm Unable to download big files. 🤥Dude, its bigger than your mom`);
                 return;
             }
             const getRandonm = (ext) => {
@@ -1604,7 +1673,7 @@ case 'yta': {
             let infoYt = await ytdl.getInfo(urlYt);
             //30 MIN
             if (infoYt.videoDetails.lengthSeconds >= 1800) {
-                reply(`Video too big!, Its bigger than even your mum 😂`);
+                reply(`Video too big!`);
                 return;
             }
             let titleYt = infoYt.videoDetails.title;
@@ -1645,7 +1714,7 @@ case 'yta': {
         }
     }
 
-break;  
+break  
 case 'ytmp4':
 case 'ytvideo':
 case 'ytv':
@@ -1734,7 +1803,7 @@ break;
                 .pipe(fs.createWriteStream(`./${randomName}`));
             //22 - 1080p/720p and 18 - 360p
             console.log("Video downloading ->", urlYt);
-            // reply("Downloading.. This may take upto 5 min!");
+            // reply("Downloading.. This may take upto 5 min!,and dont jerk off to that");
             await new Promise((resolve, reject) => {
                 stream.on("error", reject);
                 stream.on("finish", resolve);
@@ -1763,8 +1832,9 @@ break;
             reply(e.toString())
         }
 break;
+
 case "ping": case "speed": { 
-         m.reply (`${dreadedspeed.toFixed(4)} milliseconds...pretty fast,huh? Than a fat person jerkin off to a food eating competition🐒😂`); 
+         m.reply (`${dreadedspeed.toFixed(4)} milliseconds...Thats faster than fat dudes wankin off to a food eating challenge😂`); 
          } 
  break; 
   
@@ -1775,7 +1845,7 @@ case "ping": case "speed": {
 
 case "alive": { 
   
- client.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/d6dab955fbaa42fce2280.jpg' }, caption: `Hello ${m.pushName}, BACKTRACK is active\n\nActive for:  ${runtime(process.uptime())}\n\nType ${prefix}help.\n\nYou can also interact with our online chatbot built with html and JavaScript with API integration.\n\nLink is given below:\n\nhttps://quantumlab.ru.eu.org/`, fileLength: "9999999999898989899999999" }, { quoted: m }); 
+ client.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/d30a09a6559651402410d.jpg' }, caption: `Hello ${m.pushName}, BACKTRACK is active\n\nActive for:  ${runtime(process.uptime())}\n\nType ${prefix}help.\n\nYou can also interact with our online chatbot built with html and JavaScript with API integration.\n\nLink is given below:\n\nhttps://quantumlab.ru.eu.org/`, fileLength: "9999999999898989899999999" }, { quoted: m }); 
  }
 break;
 case 'apk': {
@@ -1840,7 +1910,7 @@ client.sendMessage(from, buttonMessage, { quoted: m })
  } 
      } 
  break;
-         case "lyrics": 
+          case "lyrics": 
  try { 
  if (!text) return reply("Provide a song name!"); 
  const searches = await Client.songs.search(text); 
@@ -1905,6 +1975,9 @@ case "movie":
   
   
           break; 
+ 
+  
+   
           case "linkgroup": case "link": { 
                  if (!m.isGroup) throw group; 
                  if (!isBotAdmin) throw botAdmin; 
@@ -1914,10 +1987,12 @@ case "movie":
  break;
  
           case "script": case "repo": case "sc": 
- client.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/d30a09a6559651402410d.jpg' }, caption: `You can deploy this bot using the github link below!\nFork and give us a star ✨.\n\nhttps://github.com/JasonMomanyi/BACKTRACK-\n\nYou can link dreaded bot without scanning qr using replit in the link below:\n\nhttps://replit.com/@botdreaded/Pairing-Dreaded\n\nFor deployment using heroku, fork the repo and use this link whilst replacing your-user-name and fork-name with actual details\nhttps://heroku.com/deploy?template=https://github.com/your-user-name/fork-name\n\nAre you having difficulties deploying this bot? Contact us for help!\n\nMade on Earth by Humans!👽` }, {quoted: m}); 
+ client.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/c75efecf7f0aef851fc02.jpg' }, caption: `You can deploy this bot using the github link below!\nFork and give us a star ✨.\n\nhttps://github.com/Fortunatusmokaya/DREADED-GPT-AI\n\nYou can link dreaded bot without scanning qr using replit in the link below:\n\nhttps://replit.com/@botdreaded/Pairing-Dreaded\n\nFor deployment using heroku, fork the repo and use this link whilst replacing your-user-name and fork-name with actual details\nhttps://heroku.com/deploy?template=https://github.com/your-user-name/fork-name\n\nAre you having difficulties deploying this bot? Contact us for help!\n\nMade on Earth by Humans!` }, {quoted: m}); 
   
  break; 
-         // OWNER COMMANDS
+
+
+          // OWNER COMMANDS
 
           case 'botpp': { 
     if (!Owner) throw NotOwner; 
@@ -2127,7 +2202,7 @@ async function handleGPTMessage(text, m) {
 
           
           break;*/
-                case "img": case "ai-img": case "image": case "images":
+        case "img": case "ai-img": case "image": case "images":
           try {
             if (setting === "ADD OPENAI API KEY") return reply("I need an openAi API key in my .env file.");
             if (!text) return reply(`This will generate an AI-BASED image. Note that image generated might not be realistic.`);
@@ -2153,26 +2228,31 @@ async function handleGPTMessage(text, m) {
           }
         }
 break;
-          default: {
-    if (cmd && budy && !m.chat.endsWith("broadcast") && !m.isBaileys) {
-        if (m.isGroup && !budy.toLowerCase()) return;
-
-        if (argsLog || (cmd && !m.isGroup)) {
-            console.error(chalk.black(chalk.bgRed("[ ERROR ]")), "command", chalk.turquoise(prefix + command), "Dreaded");
-        } else if (argsLog || (cmd && m.isGroup)) {
-            console.error(chalk.black(chalk.bgRed("[ ERROR ]")), "command", chalk.turquoise(prefix + command), "Dreaded");
+        default: {
+          if (cmd && budy.toLowerCase() != undefined) {
+            if (m.chat.endsWith("broadcast")) return;
+            if (m.isBaileys) return;
+            if (!budy.toLowerCase()) return;
+            if (argsLog || (cmd && !m.isGroup)) {
+              // client.sendReadReceipt(m.chat, m.sender, [m.key.id])
+              console.log(chalk.black(chalk.bgRed("[ ERROR ]")), color("command", "turquoise"), color(`${prefix}${command}`, "turquoise"), color("Dreaded", "turquoise"));
+            } else if (argsLog || (cmd && m.isGroup)) {
+              // client.sendReadReceipt(m.chat, m.sender, [m.key.id])
+              console.log(chalk.black(chalk.bgRed("[ ERROR ]")), color("command", "turquoise"), color(`${prefix}${command}`, "turquoise"), color("Dreaded", "turquoise"));
+            }
+          }
         }
+      }
     }
-    break;
-}
+  } catch (err) {
+    m.reply(util.format(err));
+  }
+};
 
-
-
-         
-
- 
-
-
-
-
-
+let file = require.resolve(__filename);
+fs.watchFile(file, () => {
+  fs.unwatchFile(file);
+  console.log(chalk.redBright(`Update ${__filename}`));
+  delete require.cache[file];
+  require(file);
+});
