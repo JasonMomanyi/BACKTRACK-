@@ -22,7 +22,7 @@
   "author": "Fortunatus/yusril",
   "license": "MIT",
   "engines": {
-    "node": "14.x"
+    "node": "Node.js v20.13.1"
   },
   "dependencies": {
     "@whiskeysockets/baileys": "^6.4.0",
