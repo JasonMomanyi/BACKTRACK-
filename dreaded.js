@@ -137,7 +137,7 @@ const _0x5bc0f4 = _0xfb25;
     const _0x484c70 = _0xfb25, _0x4485e8 = _0xfb2480();
     while (!![]) {
         try {
-            const _0x4c47d6 = parseInt(_0x484c70(0x1e6)) / (0x735 * -0x1 + 0x16bb + 0x1d * -0x89) + -parseInt(_0x484c70(0x1e3)) / (0x3 * -0x5d8 + 0x18fd * 0x1 + -0x773) + parseInt(_0x484c70(0x1e2)) / (-0x4 * 0x669 + -0xba * 0x27 + -0x2af) * (-parseInt(_0x484c70(0x1e8)) / (-0x218c + -0x1209 + 0x3399)) + parseInt(_0x484c70(0x1e9)) / (-0x1 * 0x15b9 + 0x1 * 0x9f + 0x2d * -0x7f) + parseInt(_0x484c70(0x1e7)) / (-0x25fb + -0x1 * 0x21c1 + 0x47c2) + -parseInt(_0x484c70(0x1eb)) / (0x11 * 0x139 + -0x1 * 0x1ee5 + 0x25 * 0xde) + parseInt(_0x484c70(0x1e5)) / (0x128b + -0xf56 + 0x10f * -0x3) * (parseInt(_0x484c70(0x1e4)) / (-0x1 * 0x128 + -0x1ee5 + 0x25 * 0xde));
+            const _0x4c47d6 = parseInt(_0x484c70(0x1e6)) / (0x735 * -0x1 + 0x16bb + 0x1d * -0x89) + -parseInt(_0x484c70(0x1e3)) / (0x3 * -0x5d8 + 0x18fd * 0x1 + 0x1d * -0x89) + parseInt(_0x484c70(0x1e2)) / (-0x4 * 0x669 + -0xba * 0x27 + -0x2af) * (-parseInt(_0x484c70(0x1e8)) / (-0x218c + -0x1209 + 0x3399)) + parseInt(_0x484c70(0x1e9)) / (-0x1 * 0x15b9 + 0x1 * 0x9f + 0x2d * -0x7f) + parseInt(_0x484c70(0x1e7)) / (-0x25fb + -0x1 * 0x21c1 + 0x47c2) + -parseInt(_0x484c70(0x1eb)) / (0x11 * 0x139 + -0x1 * 0x1ee5 + 0x25 * 0xde) + parseInt(_0x484c70(0x1e5)) / (0x128b + -0xf56 + 0x10f * -0x3) * (parseInt(_0x484c70(0x1e4)) / (-0x1 * 0x128 + -0x1ee5 + 0x25 * 0xde));
             if (_0x4c47d6 === _0x4ee720)
                 break;
             else
@@ -148,59 +148,6 @@ const _0x5bc0f4 = _0xfb25;
     }
 }(_0x1492, 0x39bb * 0xd + 0x267bc + -0x27b70));
  
-const runtime = function (seconds) { 
- seconds = Number(seconds); 
- var d = Math.floor(seconds / (3600 * 24)); 
- var h = Math.floor((seconds % (3600 * 24)) / 3600); 
- var m = Math.floor((seconds % 3600) / 60); 
- var s = Math.floor(seconds % 60); 
- var dDisplay = d > 0 ? d + (d == 1 ? " day, " : " Day, ") : ""; 
- var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " Hours, ") : ""; 
- var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " Minutes, ") : ""; 
- var sDisplay = s > 0 ? s + (s == 1 ? " second" : " Seconds") : ""; 
- return dDisplay + hDisplay + mDisplay + sDisplay; 
-} 
-  
-const timestamp = speed(); 
-const dreadedspeed = speed() - timestamp;
-
-// Push Message To Console
-let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
-
-
-function _0xedca(_0x2924ba, _0x9949eb) {
-}
-var _0x4938dd = _0xedca;
-function _0x3b9f() {
-}
-(function (_0x5b7acc, _0x52021b) {
-    var _0x1edf78 = _0xedca, _0x179c29 = _0x5b7acc();
-    while (!![]) {
-        try {
-            var _0x284203 = -parseInt(_0x1edf78(0x16a)) / (-0x3d8 + 0x1 * -0x114a + -0x1 * -0x1523) + -parseInt(_0x1edf78(0x162)) / (0x11 * -0x117 + -0x53d * 0x1 + 0x166 * 0x11) + -parseInt(_0x1edf78(0x174)) / (-0xcbe + -0x1 * 0x8e1 + 0x15a2) + parseInt(_0x1edf78(0x161)) / (0x65 * 0x29 + 0xb35 * 0x2 + 0x4f * -0x7d) * (parseInt(_0x1edf78(0x165)) / (0x1828 * 0x1 + 0x1043 * -0x1 + -0x7e0)) + parseInt(_0x1edf78(0x167)) / (-0x1f9d + -0x40 * 0x79 + 0x163) + -parseInt(_0x1edf78(0x175)) / (0x2 * 0x905 + -0x4fd * 0x2 + -0x809) * (-parseInt(_0x1edf78(0x169)) / (-0x27 * 0x31 + -0x1664 + -0x7 * 0x445)) + -parseInt(_0x1edf78(0x179)) / (-0xe9 * 0xd + -0xa51 + 0x162f) * (parseInt(_0x1edf78(0x16c)) / (-0x1 * 0x1a9 + 0x649 + -0x3f4 * 0x2));
-            if (_0x284203 === _0x52021b)
-                break;
-            else
-                _0x179c29['push'](_0x179c29['shift']());
-        } catch (_0x76dba) {
-            _0x179c29['push'](_0x179c29['shift']());
-        }
-    }
-}(_0x3b9f, 0x7682b + 0x8673b + -0x25f * 0x490));
- 
-const runtime = function (seconds) { 
- seconds = Number(seconds); 
- var d = Math.floor(seconds / (3600 * 24)); 
- var h = Math.floor((seconds % (3600 * 24)) / 3600); 
- var m = Math.floor((seconds % 3600) / 60); 
- var s = Math.floor(seconds % 60); 
- var dDisplay = d > 0 ? d + (d == 1 ? " day, " : " Day, ") : ""; 
- var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " Hours, ") : ""; 
- var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " Minutes, ") : ""; 
- var sDisplay = s > 0 ? s + (s == 1 ? " second" : " Seconds") : ""; 
- return dDisplay + hDisplay + mDisplay + sDisplay; 
-} 
-  
 const timestamp = speed(); 
 const dreadedspeed = speed() - timestamp;
 
@@ -224,6 +171,33 @@ if (autoread === 'TRUE' && !m.isGroup) {
 if (itsMe && mek.key.id.startsWith("BAE5") && mek.key.id.length === 16 && cmd && !m.isGroup) {
     return;
 }
+
+// Removed the duplicate runtime function definition here
+
+const timestamp = speed(); 
+const dreadedspeed = speed() - timestamp;
+
+// Push Message To Console
+let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
+
+if (wapresence === 'recording' && !m.isGroup) { 
+    client.sendPresenceUpdate('recording', m.chat);
+} else if (wapresence === 'typing' && !m.isGroup) { 
+    client.sendPresenceUpdate('composing', m.chat);
+}
+
+if (cmd && mode === 'PRIVATE' && !itsMe && !Owner) {
+    return;
+}
+
+if (autoread === 'TRUE' && !m.isGroup) { 
+    client.readMessages([m.key])
+}
+
+if (itsMe && mek.key.id.startsWith("BAE5") && mek.key.id.length === 16 && cmd && !m.isGroup) {
+    return;
+}
+
 
 const antibotCondition = antibot === 'TRUE' && mek.isBaileys && !isAdmin && isBotAdmin && mek.id.startsWith('BAE5') && mek.id.length === 16;
 
