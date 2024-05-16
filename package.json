@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node index.js"
+    "start": "npx -p node@16 node index.js"
   },
   "keywords": [
     "termux",
@@ -73,8 +73,5 @@
   "bugs": {
     "url": "https://github.com/JasonMomanyi/BACKTRACK-/issues"
   },
-  "homepage": "https://github.com/JasonMomanyi/BACKTRACK-#readme",
-  "engines": {
-    "node": "^16.0.0"
-  }
+  "homepage": "https://github.com/JasonMomanyi/BACKTRACK-#readme"
 }
