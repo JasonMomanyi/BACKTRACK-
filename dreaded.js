@@ -136,7 +136,7 @@ function _0x1492() {
     };
     return _0x1492();
 }
-const _0x5bc0f4 = _0xfb25;
+   _0x5bc0f4 = _0xfb25;
 (function (_0xfb2480, _0x4ee720) {
     const _0x484c70 = _0xfb25, _0x4485e8 = _0xfb2480();
     while (!![]) {
@@ -150,7 +150,7 @@ const _0x5bc0f4 = _0xfb25;
             _0x4485e8['push'](_0x4485e8['shift']());
         }
     }
-}(_0x1492, 0x39bb * 0xd + 0x267bc + -0x27b70));
+}
 
 const runtime = function (seconds) { 
  seconds = Number(seconds); 
