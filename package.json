@@ -21,9 +21,6 @@
   "base": "https://github.com/DikaArdnt/Hisoka-Morou",
   "author": "Fortunatus/yusril",
   "license": "MIT",
-  "engines": {
-    "node": "Node.js v20.13.1"
-  },
   "dependencies": {
     "@whiskeysockets/baileys": "^6.4.0",
     "@adiwajshing/keyed-db": "^0.2.4",
@@ -76,5 +73,8 @@
   "bugs": {
     "url": "https://github.com/JasonMomanyi/BACKTRACK-/issues"
   },
-  "homepage": "https://github.com/JasonMomanyi/BACKTRACK-#readme"
+  "homepage": "https://github.com/JasonMomanyi/BACKTRACK-#readme",
+  "engines": {
+    "node": "^16.0.0"
+  }
 }
