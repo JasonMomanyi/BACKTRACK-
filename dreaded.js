@@ -460,7 +460,7 @@ if (menu === 'VIDEO') {
 client.sendMessage(from, { text: cap}, {quoted: m})
 
 } else if (menu === 'IMAGE') {
-client.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/4f5eb47c4211fd637ebe0.png' }, caption: cap, fileLength: "9999999999"}, { quoted: m })
+client.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/d30a09a6559651402410d.jpg' }, caption: cap, fileLength: "9999999999"}, { quoted: m })
 } else if (menu === 'LINK') {
 client.sendMessage(m.chat, {
                         text: cap,
@@ -469,7 +469,7 @@ client.sendMessage(m.chat, {
                                 showAdAttribution: true,
                                 title: `BACKTRACK-BOT`,
                                 body: `A simple WhatsApp bot,developed by JasonMomanyi`,
-                                thumbnail: fs.readFileSync('./dreaded.jpg'),
+                                thumbnail: fs.readFileSync('./backtrack.jpg'),
                                 sourceUrl: `https://github.com/JasonMomanyi/BACKTRACK-`,
                                 mediaType: 1,
                                 renderLargerThumbnail: true
