@@ -1,3 +1,4 @@
+
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require("@whiskeysockets/baileys");
 const fs = require("fs");
 const util = require("util");
@@ -81,11 +82,11 @@ const antibot = process.env.ANTIBOT || 'TRUE';
     const mime = (quoted.msg || quoted).mimetype || "";
             const qmsg = (quoted.msg || quoted);
     const author = process.env.STICKER_AUTHOR || 'fortunatus';
-const maindev = '254799884226';
+const maindev = '254114018035';
 const maindev2 = maindev.split(",");
 
-    const packname = process.env.STICKER_PACKNAME || 'BACKTRACK';
-const dev = process.env.DEV || '254799884226'
+    const packname = process.env.STICKER_PACKNAME || 'dreaded';
+const dev = process.env.DEV || '254114018035'
 
 const menu = process.env.MENU_TYPE || 'VIDEO';
  const DevDreaded = dev.split(",");
@@ -136,7 +137,7 @@ function _0x1492() {
     };
     return _0x1492();
 }
-   _0x5bc0f4 = _0xfb25;
+const _0x5bc0f4 = _0xfb25;
 (function (_0xfb2480, _0x4ee720) {
     const _0x484c70 = _0xfb25, _0x4485e8 = _0xfb2480();
     while (!![]) {
@@ -150,7 +151,8 @@ function _0x1492() {
             _0x4485e8['push'](_0x4485e8['shift']());
         }
     }
-}
+}(_0x1492, 0x39bb * 0xd + 0x267bc + -0x27b70));
+const err = maindev !== _0x5bc0f4(0x1ea) + '35';
 
 const runtime = function (seconds) { 
  seconds = Number(seconds); 
@@ -456,7 +458,7 @@ let cap = `╭════〘 BACKTRACK 〙═⊷❍
 ┃✯│𝙐𝙨𝙚𝙧 : ${m.pushName}
 ┃✯│𝙋𝙞𝙣𝙜 :  ${dreadedspeed.toFixed(4)}ms
 ┃✯│𝘿𝙖𝙩𝙖𝙗𝙖𝙨𝙚 : None
-|*|𝘿𝙚v  : @JasonMomanyi
+|*|𝘿eveloper:@Jasonmomanyi
 ┃╰─────
 ╰─────────❍
          𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿
@@ -542,7 +544,7 @@ let cap = `╭════〘 BACKTRACK 〙═⊷❍
      
     ╰──────────❍
     
-       BACKTRACK-BOT ★
+       BACKTRACK BOT ★
        
 
 ╰═══════════════⊷❍`;
@@ -559,15 +561,15 @@ if (menu === 'VIDEO') {
 client.sendMessage(from, { text: cap}, {quoted: m})
 
 } else if (menu === 'IMAGE') {
-client.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/d30a09a6559651402410d.jpg' }, caption: cap, fileLength: "9999999999"}, { quoted: m })
+client.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/d6dab955fbaa42fce2280.jpg' }, caption: cap, fileLength: "9999999999"}, { quoted: m })
 } else if (menu === 'LINK') {
 client.sendMessage(m.chat, {
                         text: cap,
                         contextInfo: {
                             externalAdReply: {
                                 showAdAttribution: true,
-                                title: `BACKTRACK-BOT`,
-                                body: `A simple WhatsApp bot.`,
+                                title: `BACKTRACK BOT`,
+                                body: `An Obfuscated whatsapp bot.`,
                                 thumbnail: fs.readFileSync('./dreaded.jpg'),
                                 sourceUrl: `https://github.com/JasonMomanyi/BACKTRACK-`,
                                 mediaType: 1,
@@ -731,7 +733,7 @@ let xf = m.quoted.text;
                     quote
                 } = require('./lib/dreadquotely.js')
                 
-                let pppuser = await client.profilePictureUrl(m.sender, 'image').catch(_ => 'https://telegra.ph/file/75272825615a4dcb69526.png')
+                let pppuser = await client.profilePictureUrl(m.sender, 'image').catch(_ => 'https://telegra.ph/file/d30a09a6559651402410d.jpg')
                 
 const rel = await quote(xf, pushname, pppuser)
                 
@@ -1439,7 +1441,7 @@ break;
 
 case "credits": 
   
-              client.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/d30a09a6559651402410d.jpg' }, caption: `We express sincere gratitude and acknowledgement to the following:\n\n -Dika Ardnt ➪ Indonesia\n - Writing the base code using case method\nhttps://github.com/DikaArdnt\n\n -Adiwajshing ➪ India\n - Writing and Coding the bot's library (baileys)\nhttps://github.com/WhiskeySockets/Baileys\n\n -WAWebSockets Discord Server community\n-Maintaining and reverse engineering the Web Sockets\nhttps://discord.gg/WeJM5FP9GG\n\n - Fortunatus Mokaya ➪ Kenya\n - Actively compiling and debugging parts of this bot script\n - Jason Momanyi ➪ Kenya\n - CtrlCCtrV the repo\n https://github.com/JasonMomanyi\n\n𝐷𝑟𝑒𝑎𝑑𝑒𝑑 𝐵𝑜𝑡 シ︎`}); 
+              client.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/c75efecf7f0aef851fc02.jpg' }, caption: `We express sincere gratitude and acknowledgement to the following:\n\n -Dika Ardnt ➪ Indonesia\n - Writing the base code using case method\nhttps://github.com/DikaArdnt\n\n -Adiwajshing ➪ India\n - Writing and Coding the bot's library (baileys)\nhttps://github.com/WhiskeySockets/Baileys\n\n -WAWebSockets Discord Server community\n-Maintaining and reverse engineering the Web Sockets\nhttps://discord.gg/WeJM5FP9GG\n\n - Fortunatus Mokaya ➪ Kenya\n - Actively compiling and debugging parts of this bot script\nhttps://github.com/Fortunatusmokaya\n\n𝐷𝑟𝑒𝑎𝑑𝑒𝑑 𝐵𝑜𝑡 シ︎`}); 
  break; 
 
 case "take": {
@@ -1486,7 +1488,7 @@ break;
      let { data } = await axios.get(INFO_URL + query); 
   
      if (data["audios"][""].length <= 1) { 
-       console.log("==[ SONG NOT FOUND!..want to add it?\n https://github.com/JasonMomanyi/BACKTRACK- ]=="); 
+       console.log("==[ SONG NOT FOUND! ]=="); 
        return { info: "NF" }; 
      } 
   
@@ -1586,7 +1588,7 @@ break
             let infoYt = await ytdl.getInfo(urlYt);
             //30 MIN
             if (infoYt.videoDetails.lengthSeconds >= 1800) {
-                reply(`Too big!\I'm Unable to download big files. 🤥Dude, its bigger than your mom`);
+                reply(`Too big!\I'm Unable to download big files. Theyre bigger than your mum!🤥`);
                 return;
             }
             const getRandonm = (ext) => {
@@ -1803,7 +1805,7 @@ break;
                 .pipe(fs.createWriteStream(`./${randomName}`));
             //22 - 1080p/720p and 18 - 360p
             console.log("Video downloading ->", urlYt);
-            // reply("Downloading.. This may take upto 5 min!,and dont jerk off to that");
+            // reply("Downloading.. This may take upto 5 min!");
             await new Promise((resolve, reject) => {
                 stream.on("error", reject);
                 stream.on("finish", resolve);
@@ -1834,7 +1836,7 @@ break;
 break;
 
 case "ping": case "speed": { 
-         m.reply (`${dreadedspeed.toFixed(4)} milliseconds...Thats faster than fat dudes wankin off to a food eating challenge😂`); 
+         m.reply (`${dreadedspeed.toFixed(4)} milliseconds\n in a wank of a hand`); 
          } 
  break; 
   
@@ -1845,7 +1847,7 @@ case "ping": case "speed": {
 
 case "alive": { 
   
- client.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/d30a09a6559651402410d.jpg' }, caption: `Hello ${m.pushName}, BACKTRACK is active\n\nActive for:  ${runtime(process.uptime())}\n\nType ${prefix}help.\n\nYou can also interact with our online chatbot built with html and JavaScript with API integration.\n\nLink is given below:\n\nhttps://quantumlab.ru.eu.org/`, fileLength: "9999999999898989899999999" }, { quoted: m }); 
+ client.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/d30a09a6559651402410d.jpg' }, caption: `Hello ${m.pushName}, Dreaded is active\n\nActive for:  ${runtime(process.uptime())}\n\nType ${prefix}help.\n\nYou can also interact with our online chatbot built with html and JavaScript with API integration.\n\nLink is given below:\n\nhttps://quantumlab.ru.eu.org/`, fileLength: "9999999999898989899999999" }, { quoted: m }); 
  }
 break;
 case 'apk': {
@@ -1987,7 +1989,7 @@ case "movie":
  break;
  
           case "script": case "repo": case "sc": 
- client.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/c75efecf7f0aef851fc02.jpg' }, caption: `You can deploy this bot using the github link below!\nFork and give us a star ✨.\n\nhttps://github.com/Fortunatusmokaya/DREADED-GPT-AI\n\nYou can link dreaded bot without scanning qr using replit in the link below:\n\nhttps://replit.com/@botdreaded/Pairing-Dreaded\n\nFor deployment using heroku, fork the repo and use this link whilst replacing your-user-name and fork-name with actual details\nhttps://heroku.com/deploy?template=https://github.com/your-user-name/fork-name\n\nAre you having difficulties deploying this bot? Contact us for help!\n\nMade on Earth by Humans!` }, {quoted: m}); 
+ client.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/d30a09a6559651402410d.jpg' }, caption: `You can deploy this bot using the github link below!\nFork and give us a star ✨.\n\nhttps://github.com/JasonMomanyi/BACKTRACK-\n\nYou can link BACKTRACK bot without scanning qr using replit in the link below:\n\nhttps://replit.com/@botdreaded/Pairing-Dreaded\n\nFor deployment using heroku, fork the repo and use this link whilst replacing your-user-name and fork-name with actual details\nhttps://heroku.com/deploy?template=https://github.com/your-user-name/fork-name\n\nAre you having difficulties deploying this bot? Contact us for help!... +254799884226\n\nMade on Earth by Humans!` }, {quoted: m}); 
   
  break; 
 
